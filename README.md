@@ -4,6 +4,6 @@
 
 ## ℹ️ Sobre:
 
-Esse é um projeto feito para portifólio de data Engineer.
+Esse é um projeto feito para portifólio de Data Engineer.
 
-[Link do desáfio](https://medium.com/@meigarom/o-projeto-de-data-engineering-para-o-seu-portf%C3%B3lio-c186c7191823)
+[Link do desafio](https://medium.com/@meigarom/o-projeto-de-data-engineering-para-o-seu-portf%C3%B3lio-c186c7191823)
