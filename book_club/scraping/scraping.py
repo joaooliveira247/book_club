@@ -20,15 +20,13 @@ def get_url_by_category() -> list:
     ]
 
 
-def get_book(url: str, category: str) -> list[dict[str, str | float]]:
+def get_book(url: str, category: str) -> list[BookModel]:
     books = []
     book_response = book_request(url)
 
     book_parser = BeautifulSoup(book_response, "html.parser")
 
     articles = book_parser.find_all("article", class_="product_pod")
-
-    # book_name, category, stars, price, is_available
 
     for article in articles:
         books.append(
