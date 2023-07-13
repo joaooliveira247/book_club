@@ -23,15 +23,24 @@ def insert_db(book: BookModel | list[BookModel]) -> str:
     return book
 
 
-def select_db(id: int | list[int]) -> str:
+def select_db(id: list[int]):
     session = get_session()
     match id:
-        case int():
-            return session.query(select(BookModel, BookModel.id.in_(id)))
         case list():
             return session.query(BookModel).filter(BookModel.id.in_(id)).all()
         case _:
             raise Exception(f"book with {id} not found.")
+
+
+def delete_db(id: int) -> str | None:
+    session = get_session()
+    query = session.query(BookModel).filter(BookModel.id == id)
+    if query.one_or_none():
+        query.delete()
+        session.commit()
+        return f"{id} not found."
+    return
+
 
 def num_rows() -> int:
     session = get_session()
