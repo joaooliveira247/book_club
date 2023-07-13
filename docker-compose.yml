@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+
+  book_club:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: passwd
+      POSTGRES_DB: book_club
+    volumes: 
+      - ~/.SQLDBData/postgre/teste:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
