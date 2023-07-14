@@ -106,10 +106,9 @@ This project uses a packaging and dependency management called [`poetry`](https:
 
   The `CLI` has commands to query, but I strongly recommend using a `SDK` to make queries and manipulate data.
 
-  > ***OBS:***
+  > **_OBS:_**
   >
   > This commands only works if you set database requirements to work (`.env`, `docker-compose.yml`).
-
 
   - `select`
 
@@ -121,9 +120,55 @@ This project uses a packaging and dependency management called [`poetry`](https:
 
   - It will return one/many rows in terminal.
 
+  ###
+
+  - `select-title`
+
+  ###
+
+  ```bash
+  python3 manage.py select-title <title>
+  ```
+
+  - It will return one/nothing rows in terminal.
+
+  ###
+
+  - `insert`
+
+  ###
+
+  ```bash
+  python3 manage.py insert "<title>" <category> <stars> <price> <is_available>
+  ```
+
+  - It will insert a book in database.
+
+    `ex:`
+
+    ```bash
+    python3 manage.py insert "python fluence" tecnology 5 100 true
+    ```
+
+  ###
+
   - `delete`
 
+  ###
 
+  ```bash
+  python3 manage.py delete <id>
+  ```
+
+  - It will delete a book from database.
+
+  - `rows`
+
+  ```bash
+  python3 manage.py rows
+  ```
+
+  - It will return the number of rows in a table.
 
 ## 🐍 Usage libraries:
 
