@@ -2,6 +2,7 @@ from book_club.core.crud import (
     insert_db,
     create_db,
     select_db,
+    select_db_by_name,
     num_rows,
     delete_db,
 )
@@ -48,7 +49,9 @@ def __add_rows(books: BookModel, table: Table) -> Row:
 
 @app.command()
 def create():
-    create_db()
+    msg = create_db()
+
+    console.print(msg, style="info")
     return
 
 
@@ -77,7 +80,7 @@ def select(ids: list[int]):
             console.print(book_table)
             return
         case _:
-            console.print("Find another method.")
+            console.print("Find another method.", style="warning")
             return
 
 
@@ -85,9 +88,9 @@ def select(ids: list[int]):
 def delete(id: int) -> None:
     operation = delete_db(id)
     if operation:
-        print(f"Book in id: {id} deleted")
+        console.print(f"Book in id: {id} deleted", style="info")
         return
-    print(f"{id} not found.")
+    console.print(f"{id} not found.", style="warning")
 
 
 @app.command()
@@ -106,9 +109,21 @@ def insert(
         is_available=is_available,
     )
     insert_db(book)
+    console.print(f"book: {book_title} inserted", style="info")
+    return
+
+
+@app.command()
+def select_title(title: str):
+    query = select_db_by_name(title)
+    if query:
+        __add_rows(query, book_table)
+        console.print(book_table)
+        return
+    console.print(f"title: {title} not found", style="warning")
     return
 
 
 @app.command()
 def rows():
-    print(f"{num_rows()} Rows.")
+    console.print(f"{num_rows()} Rows.", style="info")
