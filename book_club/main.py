@@ -12,9 +12,38 @@ from book_club.utils import to_csv
 from typer import Typer, Option
 from rich.table import Table, Row
 from rich.console import Console
+from rich.theme import Theme
 from typing import Annotated
 
 app = Typer()
+
+console = Console(
+    theme=Theme(
+        {"info": "dim cyan", "warning": "magenta", "danger": "bold red"}
+    )
+)
+
+book_table = Table(
+    "ID",
+    "Title",
+    "Category",
+    "Stars",
+    "Price",
+    "Available",
+    title="Books",
+)
+
+
+def __add_rows(books: BookModel, table: Table) -> Row:
+    table.add_row(
+        str(books.id),
+        books.title,
+        books.category,
+        str(books.stars),
+        str(books.price),
+        str(books.is_available),
+    )
+    return
 
 
 @app.command()
@@ -40,28 +69,6 @@ def load(
 
 @app.command()
 def select(ids: list[int]):
-    console = Console()
-    book_table = Table(
-        "ID",
-        "Title",
-        "Category",
-        "Stars",
-        "Price",
-        "Available",
-        title="Books",
-    )
-
-    def __add_rows(books: BookModel, table: Table) -> Row:
-        table.add_row(
-            str(books.id),
-            books.title,
-            books.category,
-            str(books.stars),
-            str(books.price),
-            str(books.is_available),
-        )
-        return
-
     match len(ids):
         case _ if len(ids) > 0:
             for book in select_db(ids):
