@@ -84,5 +84,24 @@ def delete(id: int) -> None:
 
 
 @app.command()
+def insert(
+    book_title: str,
+    category: str,
+    stars: int,
+    price: float,
+    is_available: bool,
+):
+    book = BookModel(
+        title=book_title,
+        category=category,
+        stars=stars,
+        price=price,
+        is_available=is_available,
+    )
+    insert_db(book)
+    return
+
+
+@app.command()
 def rows():
     print(f"{num_rows()} Rows.")
