@@ -2,6 +2,7 @@ from book_club.core.config import settings
 from book_club.core.dependencies import get_session
 from book_club.models.book_model import BookModel, Base
 from sqlalchemy import select
+from sqlalchemy.sql import func
 from book_club.core.data_base import engine
 
 
@@ -39,6 +40,20 @@ def delete_db(id: int) -> str | None:
         query.delete()
         session.commit()
         return f"{id} not found."
+    return
+
+
+def select_db_by_name(title: str) -> BookModel | None:
+    session = get_session()
+
+    query = (
+        session.query(BookModel)
+        .filter(func.lower(BookModel.title) == title)
+        .one_or_none()
+    )
+
+    if query:
+        return query
     return
 
 
