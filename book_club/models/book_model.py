@@ -18,4 +18,4 @@ class BookModel(Base):
     category: str = Column(String(128))
 
     def __repr__(self) -> str:
-        return f"{self.title} - {self.title}"
+        return f"{self.title}"
