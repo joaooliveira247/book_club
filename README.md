@@ -64,6 +64,10 @@ This project uses a packaging and dependency management called [`poetry`](https:
 
 ## 📜 Documentation:
 
+**⚠️ Windows**
+
+If you are running this project on Windows replace the `python3` by `poetry run`.
+
 - `CLI`
 
   - `create`
@@ -169,6 +173,10 @@ This project uses a packaging and dependency management called [`poetry`](https:
   ```
 
   - It will return the number of rows in a table.
+
+- `functions`
+
+  
 
 ## 🐍 Usage libraries:
 
