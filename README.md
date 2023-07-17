@@ -183,3 +183,5 @@ This project uses a packaging and dependency management called [`poetry`](https:
 - [rich - 13.3.5](https://rich.readthedocs.io/en/stable/introduction.html)
 
 - [typer - 0.9.0](https://typer.tiangolo.com/)
+
+- [python-dotenv - 1.0.0](https://pypi.org/project/python-dotenv/)
